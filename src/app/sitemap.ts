@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { allProducts } from '@/data/products';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ogbeauty.in';
+  const baseUrl = 'https://ogluxuryperfumes.in';
 
   const productRoutes = allProducts.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,

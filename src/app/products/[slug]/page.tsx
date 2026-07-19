@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.title,
-    image: `https://ogbeauty.in${product.image}`,
+    image: `https://ogluxuryperfumes.in${product.image}`,
     description: product.description,
     brand: {
       "@type": "Brand",
@@ -45,7 +45,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     },
     offers: {
       "@type": "Offer",
-      url: `https://ogbeauty.in/products/${product.slug}`,
+      url: `https://ogluxuryperfumes.in/products/${product.slug}`,
       priceCurrency: "INR",
       price: product.price,
       availability: product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",

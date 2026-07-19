@@ -19,8 +19,8 @@ export default function PrivacyPolicyPage() {
             </p>
 
             <h3 style={{ fontSize: 20, fontWeight: 600, marginTop: 32, marginBottom: 12, color: "var(--heading-color)" }}>INTRODUCTION</h3>
-            <p style={{ marginBottom: 16 }}>
-              The online store www.ogbeauty.in ("Online Store") is owned and operated by OG Beauty Private Limited, a private limited company incorporated under the laws of India having its registered office at Block 7 & 8, Garden View, Sindhu Bhawan Marg, Cafe Flambe, Bodakdev, Ahmedabad, Gujarat - 380054, India
+            <p style={{ color: "var(--body-text-color)", marginBottom: 16 }}>
+              The online store www.ogluxuryperfumes.in ("Online Store") is owned and operated by OG Beauty Private Limited, a private limited company incorporated under the laws of India having its registered office at Block 7 & 8, Garden View, Sindhu Bhawan Marg, Cafe Flambe, Bodakdev, Ahmedabad, Gujarat - 380054, India
             </p>
             <p style={{ marginBottom: 16 }}>
               Users are requested to read and understand the Policy very carefully before using or accessing the Online Store. Through this Policy, OG Beauty Private Limited intends to convey the manner in which the user’s information is collated and used by OG Beauty Private Limited while providing the services of the Online Store. This Policy is binding on every user of the Online Store and users who do not agree with the terms of this Policy should not use or access the Online Store.

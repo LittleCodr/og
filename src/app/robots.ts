@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/account/', '/cart/'],
     },
-    sitemap: 'https://ogbeauty.in/sitemap.xml',
+    sitemap: 'https://ogluxuryperfumes.in/sitemap.xml',
   };
 }
