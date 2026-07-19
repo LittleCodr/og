@@ -42,7 +42,7 @@ export default function ProductCard({ product }: { product: Product }) {
               >
                 <img
                   src={product.image}
-                  alt={product.title}
+                  alt={product.altText || product.title}
                   width={1080}
                   height={1080}
                   loading="lazy"

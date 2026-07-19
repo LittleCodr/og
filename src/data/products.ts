@@ -11,6 +11,7 @@ export type Product = {
   rating?: number;
   reviews?: number;
   soldOut?: boolean;
+  altText?: string;
 };
 
 export const allProducts: Product[] = [
@@ -25,6 +26,7 @@ export const allProducts: Product[] = [
     compareAtPrice: 999,
     discountLabel: "20% OFF",
     image: "/images/Wild_Fire_A_1500x1500_jpg.jpg",
+    altText: "og-luxury-wild-fire",
     rating: 5.0,
     reviews: 42,
   },
@@ -39,6 +41,7 @@ export const allProducts: Product[] = [
     compareAtPrice: 999,
     discountLabel: "10% OFF",
     image: "/images/OG_Thunder_Wave_Perfume_Listing_Images_2.jpg",
+    altText: "og-luxury-thunder-wave",
     rating: 5.0,
     reviews: 32,
   },
@@ -52,6 +55,7 @@ export const allProducts: Product[] = [
     compareAtPrice: 699,
     discountLabel: "29% OFF",
     image: "/images/OG_PowerIntenseListingimage_3.jpg",
+    altText: "ashish-chanchlani-og-luxury-power-intense",
     rating: 4.9,
     reviews: 156,
   },
@@ -64,6 +68,7 @@ export const allProducts: Product[] = [
     compareAtPrice: 750,
     discountLabel: "20% OFF",
     image: "/images/Black_Boss_Listing_image_1.jpg",
+    altText: "og-luxury-black-boss",
   },
   {
     id: "5",
@@ -73,6 +78,7 @@ export const allProducts: Product[] = [
     price: 699,
     compareAtPrice: 750,
     image: "/images/OG_AquaKingListingimage_3.jpg",
+    altText: "og-luxury-aqua-king",
     soldOut: true,
   },
   {
@@ -84,6 +90,7 @@ export const allProducts: Product[] = [
     compareAtPrice: 499,
     discountLabel: "20% OFF",
     image: "/images/OG_Alpha_Duo_Listing_image_1__jpg.png",
+    altText: "og-luxury-alpha-duo-noble-man-dark-lord",
   },
   {
     id: "7",
@@ -94,6 +101,7 @@ export const allProducts: Product[] = [
       "A premium, long-lasting oud fragrance with a 21% perfume oil concentration for exceptional depth and staying power.",
     price: 599,
     image: "/images/royaloud1.png",
+    altText: "og-luxury-royal-oud",
   },
   {
     id: "8",
@@ -104,6 +112,7 @@ export const allProducts: Product[] = [
       "India's strongest extrait de parfum with a 40% oil concentration, built for maximum longevity and projection.",
     price: 549,
     image: "/images/OG_Smokey_1_1_jpg.jpg",
+    altText: "og-luxury-smokey",
   },
   {
     id: "9",
@@ -113,6 +122,7 @@ export const allProducts: Product[] = [
     description: "A premium, long-lasting fragrance with a 21% perfume oil concentration.",
     price: 599,
     image: "/images/Gallant_jpg.jpg",
+    altText: "og-luxury-ekaki",
   },
   {
     id: "10",
@@ -122,6 +132,7 @@ export const allProducts: Product[] = [
     description: "A strong, gallant-styled extrait de parfum with a 40% oil concentration.",
     price: 549,
     image: "/images/Gallant_jpg.jpg",
+    altText: "og-luxury-gallant",
   },
   {
     id: "11",
@@ -131,6 +142,7 @@ export const allProducts: Product[] = [
     description: "A deep, smokey extrait de parfum with a 40% oil concentration.",
     price: 549,
     image: "/images/OG_Smokey_1_1_jpg.jpg",
+    altText: "og-luxury-smokey-intense",
   },
   {
     id: "12",
@@ -139,6 +151,7 @@ export const allProducts: Product[] = [
     description: "Four signature oud extrait de parfum blends, 20ml each, in one combo pack.",
     price: 999,
     image: "/images/OG_pack_of_4.jpg",
+    altText: "og-luxury-gift-set-perfume-combo",
   },
 ];
 

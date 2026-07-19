@@ -18,10 +18,10 @@ export default function HomeBanners({ banners }: { banners: Banner[] }) {
         >
           <a href={b.href}>
             <div className="desktop-image d-md-block d-none">
-              <img src={b.image} alt="" style={{ width: "100%" }} />
+              <img src={b.image} alt={b.altText || "banner image"} style={{ width: "100%" }} />
             </div>
             <div className="mobile-image d-md-none">
-              <img src={b.image} alt="" style={{ width: "100%" }} />
+              <img src={b.image} alt={b.altText || "banner image"} style={{ width: "100%" }} />
             </div>
           </a>
         </motion.div>

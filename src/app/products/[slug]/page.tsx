@@ -7,8 +7,23 @@ import ProductGrid from "@/components/ProductGrid";
 import { allProducts, getProductBySlug } from "@/data/products";
 import AddToCartPanel from "@/components/AddToCartPanel";
 
+import { Metadata } from "next";
+
 export function generateStaticParams() {
   return allProducts.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  
+  if (!product) return { title: "Product Not Found" };
+
+  return {
+    title: `${product.title} Perfume | OG Luxury Extrait De Parfum`,
+    description: `Buy OG Luxury ${product.title} perfume online. ${product.description} Experience the best long lasting perfume for men.`,
+    keywords: `buy og luxury perfume, buy ${product.title} perfume, order og perfume, ${product.altText?.replace(/-/g, ' ')}, premium perfume, best perfume for men, 40% perfume concentration`,
+  };
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
