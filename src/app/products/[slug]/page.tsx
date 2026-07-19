@@ -33,8 +33,43 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const related = allProducts.filter((p) => p.id !== product.id).slice(0, 6);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    image: `https://ogbeauty.in${product.image}`,
+    description: product.description,
+    brand: {
+      "@type": "Brand",
+      name: "OG Luxury",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://ogbeauty.in/products/${product.slug}`,
+      priceCurrency: "INR",
+      price: product.price,
+      availability: product.soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "OG Beauty",
+      },
+    },
+  };
+
+  if (product.rating && product.reviews) {
+    (jsonLd as any).aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: product.rating,
+      reviewCount: product.reviews,
+    };
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AnnouncementBar />
       <Header />
       <main style={{ padding: "40px 0" }}>
