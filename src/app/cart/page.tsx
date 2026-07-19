@@ -7,9 +7,39 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileStickyNav from "@/components/MobileStickyNav";
 import { useCart } from "@/context/CartContext";
+import { useState } from "react";
+import { load } from "@cashfreepayments/cashfree-js";
 
 export default function CartPage() {
   const { items, setQty, removeItem, totalPrice } = useCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsCheckingOut(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
+      const data = await res.json();
+
+      if (data.payment_session_id) {
+        const cashfree = await load({ mode: "production" });
+        cashfree.checkout({
+          paymentSessionId: data.payment_session_id,
+          redirectTarget: "_self",
+        });
+      } else {
+        alert(data.error || "Failed to initiate checkout");
+        setIsCheckingOut(false);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred during checkout");
+      setIsCheckingOut(false);
+    }
+  };
 
   return (
     <>
@@ -115,19 +145,20 @@ export default function CartPage() {
                     type="button"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => alert("Checkout coming soon!")}
+                    onClick={handleCheckout}
+                    disabled={isCheckingOut}
                     style={{
                       width: "100%",
                       padding: "14px",
-                      background: "var(--base-color)",
-                      color: "#fff",
+                      background: isCheckingOut ? "var(--extra-medium-gray)" : "var(--base-color)",
+                      color: isCheckingOut ? "var(--body-text-color)" : "#fff",
                       border: 0,
                       borderRadius: 8,
                       fontWeight: 600,
-                      cursor: "pointer"
+                      cursor: isCheckingOut ? "not-allowed" : "pointer"
                     }}
                   >
-                    Checkout
+                    {isCheckingOut ? "Processing..." : "Checkout"}
                   </motion.button>
                 </div>
               </div>
