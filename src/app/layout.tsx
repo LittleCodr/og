@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description: "OWN THE ORIGINAL. Premium fragrance, skincare & wellness by OG Beauty.",
 };
 
+import { AuthProvider } from "@/context/AuthContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,7 +41,9 @@ export default function RootLayout({
         ))}
       </head>
       <body>
-        <CartProvider>{children}</CartProvider>
+        <AuthProvider>
+          <CartProvider>{children}</CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

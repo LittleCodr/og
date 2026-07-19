@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -38,11 +39,16 @@ export default function CartPage() {
           ) : (
             <div style={{ display: "flex", flexWrap: "wrap", gap: 32 }}>
               <div style={{ flex: "2 1 500px" }}>
-                {items.map((item) => (
-                  <div
-                    key={item.id}
-                    style={{
-                      display: "flex",
+                <AnimatePresence>
+                  {items.map((item) => (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0, overflow: "hidden" }}
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        display: "flex",
                       gap: 16,
                       alignItems: "center",
                       padding: "16px 0",
@@ -61,35 +67,42 @@ export default function CartPage() {
                       <p style={{ color: "var(--body-text-color)", marginTop: 4 }}>₹ {item.price}</p>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", border: "1px solid var(--extra-medium-gray)", borderRadius: 8 }}>
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={{ backgroundColor: "var(--extra-medium-gray)" }}
+                        whileTap={{ scale: 0.9 }}
                         onClick={() => setQty(item.id, item.qty - 1)}
-                        style={{ padding: "6px 12px", border: 0, background: "none" }}
+                        style={{ padding: "6px 12px", border: 0, background: "none", borderRadius: "8px 0 0 8px" }}
                       >
                         −
-                      </button>
+                      </motion.button>
                       <span style={{ minWidth: 20, textAlign: "center" }}>{item.qty}</span>
-                      <button
+                      <motion.button
                         type="button"
+                        whileHover={{ backgroundColor: "var(--extra-medium-gray)" }}
+                        whileTap={{ scale: 0.9 }}
                         onClick={() => setQty(item.id, item.qty + 1)}
-                        style={{ padding: "6px 12px", border: 0, background: "none" }}
+                        style={{ padding: "6px 12px", border: 0, background: "none", borderRadius: "0 8px 8px 0" }}
                       >
                         +
-                      </button>
+                      </motion.button>
                     </div>
                     <span style={{ minWidth: 70, textAlign: "right", fontWeight: 600 }}>
                       ₹ {item.price * item.qty}
                     </span>
-                    <button
+                    <motion.button
                       type="button"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => removeItem(item.id)}
                       aria-label="Remove"
                       style={{ border: 0, background: "none", color: "var(--red)", cursor: "pointer" }}
                     >
                       Remove
-                    </button>
-                  </div>
+                    </motion.button>
+                  </motion.div>
                 ))}
+                </AnimatePresence>
               </div>
 
               <div style={{ flex: "1 1 260px" }}>
@@ -98,8 +111,11 @@ export default function CartPage() {
                     <span>Subtotal</span>
                     <span style={{ fontWeight: 600 }}>₹ {totalPrice}</span>
                   </div>
-                  <button
+                  <motion.button
                     type="button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => alert("Checkout coming soon!")}
                     style={{
                       width: "100%",
                       padding: "14px",
@@ -108,13 +124,11 @@ export default function CartPage() {
                       border: 0,
                       borderRadius: 8,
                       fontWeight: 600,
+                      cursor: "pointer"
                     }}
                   >
                     Checkout
-                  </button>
-                  <p style={{ fontSize: 12, color: "var(--body-text-color)", marginTop: 12 }}>
-                    This is a demo storefront — checkout is not connected to a payment provider.
-                  </p>
+                  </motion.button>
                 </div>
               </div>
             </div>

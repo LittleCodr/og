@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/data/products";
 
@@ -34,27 +35,33 @@ export default function AddToCartPanel({ product }: { product: Product }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
       <div style={{ display: "flex", alignItems: "center", border: "1px solid var(--extra-medium-gray)", borderRadius: 8 }}>
-        <button
+        <motion.button
           type="button"
+          whileHover={{ scale: 1.1, backgroundColor: "var(--extra-medium-gray)" }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => setQty((q) => Math.max(1, q - 1))}
-          style={{ padding: "10px 16px", border: 0, background: "none", fontSize: 18 }}
+          style={{ padding: "10px 16px", border: 0, background: "none", fontSize: 18, borderRadius: "8px 0 0 8px", cursor: "pointer" }}
           aria-label="Decrease quantity"
         >
           −
-        </button>
+        </motion.button>
         <span style={{ minWidth: 24, textAlign: "center" }}>{qty}</span>
-        <button
+        <motion.button
           type="button"
+          whileHover={{ scale: 1.1, backgroundColor: "var(--extra-medium-gray)" }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => setQty((q) => q + 1)}
-          style={{ padding: "10px 16px", border: 0, background: "none", fontSize: 18 }}
+          style={{ padding: "10px 16px", border: 0, background: "none", fontSize: 18, borderRadius: "0 8px 8px 0", cursor: "pointer" }}
           aria-label="Increase quantity"
         >
           +
-        </button>
+        </motion.button>
       </div>
 
-      <button
+      <motion.button
         type="button"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.95 }}
         onClick={handleAdd}
         style={{
           flex: 1,
@@ -68,7 +75,7 @@ export default function AddToCartPanel({ product }: { product: Product }) {
         }}
       >
         {added ? "Added to cart ✓" : "Add to cart"}
-      </button>
+      </motion.button>
     </div>
   );
 }

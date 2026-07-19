@@ -15,11 +15,11 @@ const orders = [
 
 const importantLinks = [
   { label: "About Us", href: "/pages/about-us" },
-  { label: "Contact Us", href: "/pages/contact" },
-  { label: "Terms & Conditions", href: "/pages/term-and-conditions" },
+  { label: "Contact Us", href: "/pages/contact-us" },
+  { label: "Terms & Conditions", href: "/pages/terms-and-conditions" },
   { label: "Coupon T&C", href: "/pages/coupon-terms-condition" },
   { label: "Privacy Policy", href: "/pages/privacy-policy" },
-  { label: "Return & Refund Policy", href: "/pages/return-refund-policy" },
+  { label: "Return & Refund Policy", href: "/pages/return-and-refund-policy" },
   { label: "Blogs", href: "/blogs/news" },
 ];
 
@@ -137,7 +137,7 @@ export default function Footer() {
           <div className="footer-bottom">
             <div className="row align-items-center justify-content-md-between justify-content-center copyright">
               <div className="col-md-6 d-flex gap-3 footer-policy-links justify-content-md-start justify-content-center">
-                <a href="/pages/term-and-conditions" className="hover-underline">
+                <a href="/pages/terms-and-conditions" className="hover-underline">
                   Terms &amp; Conditions
                 </a>
                 <a href="/pages/privacy-policy" className="hover-underline">

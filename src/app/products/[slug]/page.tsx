@@ -89,7 +89,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
 
         <div style={{ marginTop: 48 }}>
-          <ProductGrid title="You may also like" products={related} />
+          <ProductGrid tabs={[{ id: "related", title: "You may also like", products: related }]} />
         </div>
       </main>
       <Footer />

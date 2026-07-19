@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import type { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
@@ -120,11 +121,17 @@ export default function ProductCard({ product }: { product: Product }) {
               <span className="btn-text">Sold out</span>
             </button>
           ) : (
-            <button type="button" onClick={handleAdd} aria-label="add to cart">
+            <motion.button 
+              type="button" 
+              onClick={handleAdd} 
+              aria-label="add to cart"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <span className="btn-text" data-text="Add to cart">
                 {added ? "Added ✓" : "Add to cart"}
               </span>
-            </button>
+            </motion.button>
           )}
         </div>
       </div>

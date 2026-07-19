@@ -14,7 +14,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       <AnnouncementBar />
       <Header />
       <main style={{ padding: "20px 0", minHeight: "50vh" }}>
-        <ProductGrid title={title} products={allProducts} />
+        <ProductGrid tabs={[{ id: slug, title, products: allProducts }]} />
       </main>
       <Footer />
       <MobileStickyNav />
