@@ -1,0 +1,122 @@
+.klaviyo-form input,
+.klaviyo-form input:hover {
+  border-color: var(--extra-medium-gray) !important;
+}
+.klaviyo-form form {
+  max-width: 500px !important;
+}
+.klaviyo-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 120px;
+}
+.klaviyo-form input {
+  padding-right: 156px !important;
+  box-shadow: none !important;
+}
+.klaviyo-form input:focus {
+  border-color: var(--dark-color);
+}
+.newsletter-wrap input {
+  border-radius: 30px;
+  border: 1px solid #b6b6b6;
+  padding: 10px 23px;
+  color: #fff;
+  font-size: 14px;
+  outline: 0;
+  height: 40px;
+  max-width: 311px;
+}
+
+.newsletter-wrap input::placeholder {
+  color: #fff;
+}
+
+.section-newsletter {
+  position: relative;
+}
+.section-newsletter .bg-img {
+  background-size: 18%;
+  background-repeat: repeat-x;
+  background-position: 0 140px;
+  padding: 60px 0 120px;
+}
+.newsletter-heading .widget-title {
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0;
+}
+.newsletter-wrap .btn {
+  background: #ffffff;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 30px;
+  text-transform: uppercase;
+}
+@media (max-width: 1440px) {
+  .section-newsletter .bg-img {
+    background-position: 0 160px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .newsletter-heading .widget-title {
+    font-size: 28px;
+  }
+  .section-newsletter .bg-img {
+    background-size: 40%;
+    background-position: 0 140px;
+  }
+}
+
+@media (max-width: 991px) {
+  .section-newsletter .bg-img {
+    padding: 40px 0 100px;
+  }
+  .section-newsletter .bg-img {
+    background-size: 50%;
+    background-position: 0 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .klaviyo-form button {
+    min-width: 100px;
+  }
+  .klaviyo-form input {
+    padding-right: 136px !important;
+  }
+  .newsletter-heading .widget-title {
+    font-size: 20px;
+  }
+  .newsletter-wrap .btn {
+    font-size: 14px;
+    padding: 10px 30px;
+    width: 100%;
+  }
+  .newsletter-wrap input {
+    height: 45px;
+    max-width: 100%;
+  }
+  .section-newsletter .bg-img {
+    padding: 40px 0 140px;
+  }
+  .section-newsletter .bg-img {
+    background-size: 100%;
+    background-position: 0 230px;
+  }
+}
+@media(max-width:350px){
+  .section-newsletter .bg-img {
+      padding: 40px 0 120px;
+  }
+}
+
+
+
+
+
+
