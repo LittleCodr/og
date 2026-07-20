@@ -9,12 +9,27 @@ import MobileStickyNav from "@/components/MobileStickyNav";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { load } from "@cashfreepayments/cashfree-js";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "@/lib/firebase";
 
 export default function CartPage() {
   const { items, setQty, removeItem, totalPrice } = useCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const handleCheckout = async () => {
+    if (analytics) {
+      (logEvent as any)(analytics, "begin_checkout", {
+        currency: "INR",
+        value: totalPrice,
+        items: items.map(item => ({
+          item_id: item.id,
+          item_name: item.title,
+          price: item.price,
+          quantity: item.qty
+        }))
+      });
+    }
+    
     setIsCheckingOut(true);
     try {
       const res = await fetch("/api/checkout", {

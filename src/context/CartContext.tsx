@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "@/lib/firebase";
 
 const STORAGE_KEY = "og-beauty-cart";
 
@@ -45,6 +47,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items, hydrated]);
 
   const addItem = (item: Omit<CartItem, "qty">) => {
+    if (analytics) {
+      (logEvent as any)(analytics, "add_to_cart", {
+        currency: "INR",
+        value: item.price,
+        items: [{ item_id: item.id, item_name: item.title, price: item.price, quantity: 1 }]
+      });
+    }
+
     setItems((prev) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
@@ -55,6 +65,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const removeItem = (id: string) => {
+    const itemToRemove = items.find(i => i.id === id);
+    if (analytics && itemToRemove) {
+      (logEvent as any)(analytics, "remove_from_cart", {
+        currency: "INR",
+        value: itemToRemove.price * itemToRemove.qty,
+        items: [{ item_id: itemToRemove.id, item_name: itemToRemove.title, price: itemToRemove.price, quantity: itemToRemove.qty }]
+      });
+    }
     setItems((prev) => prev.filter((i) => i.id !== id));
   };
 

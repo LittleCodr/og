@@ -23,7 +23,9 @@ export const metadata: Metadata = {
   keywords: "og luxury, og luxury perfume, og luxury perfumes, og luxury perfumes india, og luxury official, og luxury official website, og luxury official store, og luxury perfume official, og luxury online, buy og luxury perfume, og perfume, og perfumes, og luxury fragrances, og beauty perfume, og beauty perfumes, og beauty luxury, og beauty official, ashish chanchlani perfume, ashish chanchlani perfumes, ashish chanchlani fragrance, ashish chanchlani fragrance brand, ashish chanchlani perfume brand, ashish perfume, ashish perfume brand, ashish luxury perfume, ashish chanchlani luxury perfume, ashish chanchlani og perfume, ashish og luxury, ashish og beauty, ashish chanchlani og beauty, og beauty, og beauty fragrance, og beauty perfume india, og beauty products, long lasting perfume, best perfume for men, premium perfume, luxury perfume india, perfume gift set, perfume combo, perfume combo for men, gift perfume, travel perfume, 40% perfume concentration, extrait de parfum india",
 };
 
+import { Suspense } from "react";
 import { AuthProvider } from "@/context/AuthContext";
+import FirebaseAnalytics from "@/components/FirebaseAnalytics";
 
 export default function RootLayout({
   children,
@@ -42,6 +44,9 @@ export default function RootLayout({
         ))}
       </head>
       <body>
+        <Suspense fallback={null}>
+          <FirebaseAnalytics />
+        </Suspense>
         <AuthProvider>
           <CartProvider>{children}</CartProvider>
         </AuthProvider>

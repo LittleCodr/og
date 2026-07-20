@@ -7,11 +7,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileStickyNav from "@/components/MobileStickyNav";
 import Link from "next/link";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "@/lib/firebase";
 
 function StatusContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("order_id");
-  const { clearCart } = useCart();
+  const { items, totalPrice, clearCart } = useCart();
   const router = useRouter();
 
   const [status, setStatus] = useState<"loading" | "success" | "failed">("loading");
@@ -33,6 +35,21 @@ function StatusContent() {
 
         if (data.success) {
           setStatus("success");
+          
+          if (analytics) {
+            (logEvent as any)(analytics, "purchase", {
+              transaction_id: orderId,
+              currency: "INR",
+              value: totalPrice,
+              items: items.map(item => ({
+                item_id: item.id,
+                item_name: item.title,
+                price: item.price,
+                quantity: item.qty
+              }))
+            });
+          }
+
           clearCart();
         } else {
           setStatus("failed");

@@ -6,6 +6,7 @@ import MobileStickyNav from "@/components/MobileStickyNav";
 import ProductGrid from "@/components/ProductGrid";
 import { allProducts, getProductBySlug } from "@/data/products";
 import AddToCartPanel from "@/components/AddToCartPanel";
+import ViewItemTracker from "@/components/ViewItemTracker";
 
 import { Metadata } from "next";
 
@@ -70,6 +71,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ViewItemTracker product={product} />
       <AnnouncementBar />
       <Header />
       <main style={{ padding: "40px 0" }}>
