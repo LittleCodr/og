@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     const appId = process.env.CASHFREE_APP_ID;
     const secretKey = process.env.CASHFREE_SECRET_KEY;
-    const isProd = process.env.CASHFREE_ENVIRONMENT === 'PROD';
+    const isProd = process.env.NEXT_PUBLIC_CASHFREE_ENVIRONMENT === 'PROD';
 
     if (!appId || !secretKey) {
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });

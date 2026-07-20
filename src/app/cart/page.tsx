@@ -25,7 +25,8 @@ export default function CartPage() {
       const data = await res.json();
 
       if (data.payment_session_id) {
-        const cashfree = await load({ mode: "production" });
+        const mode = process.env.NEXT_PUBLIC_CASHFREE_ENVIRONMENT === "SANDBOX" ? "sandbox" : "production";
+        const cashfree = await load({ mode });
         cashfree.checkout({
           paymentSessionId: data.payment_session_id,
           redirectTarget: "_self",

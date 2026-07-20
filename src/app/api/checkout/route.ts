@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
     const appId = process.env.CASHFREE_APP_ID;
     const secretKey = process.env.CASHFREE_SECRET_KEY;
-    const isProd = process.env.CASHFREE_ENVIRONMENT === 'PROD';
+    const isProd = process.env.NEXT_PUBLIC_CASHFREE_ENVIRONMENT === 'PROD';
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ogluxuryperfumes.in';
 
     if (!appId || !secretKey) {
